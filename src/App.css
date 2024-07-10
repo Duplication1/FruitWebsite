@@ -526,3 +526,9 @@ font-size: 20px;
 #accordion label + input[type="radio"]:checked + .content{
   max-height: 400px;
 }
+
+@media (max-width: 800px){
+  #accordion{
+    width: 400px
+  }
+}
