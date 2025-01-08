@@ -1,0 +1,1 @@
+<input {{ $attributes->merge(['class' => 'w-4/5 mx-auto mt-5 h-10']) }}>

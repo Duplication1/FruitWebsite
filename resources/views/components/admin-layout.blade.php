@@ -8,7 +8,7 @@
     <title>Gamot's Fruit</title>
 </head>
 <body class="min-h-[100vh] h-auto font-sans">
- <x-main-nav />
+ <x-admin-main-nav />
  <div class="min-h-[calc(100vh-128px)] h-auto w-full p-4 bg-[url('{{ Vite::asset('resources/images/fruit-bg.svg') }}')] bg-cover bg-center bg-green-200">
         {{ $slot }}
     </div>
