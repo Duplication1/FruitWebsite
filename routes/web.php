@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\StoreController;
 use App\Http\Controllers\SessionController;
 
 Route::get('/', function () {
@@ -14,9 +15,7 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return view('contact');
 });
-Route::get('/store/', function () {
-    return view('store.index');
-});
+
 
 
 Route::get('/admin/register', [AdminController::class, 'create']);
@@ -31,3 +30,5 @@ Route::post('/admin/logout', [SessionController::class, 'destroy']);
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
 });
+
+Route::get('/store', [StoreController::class, 'create']);
