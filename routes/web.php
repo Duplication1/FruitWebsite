@@ -27,8 +27,12 @@ Route::get('/admin/register', function () {
 Route::get('/admin', [SessionController::class, 'create'])->name('admin.login');
 Route::post('/admin', [SessionController::class, 'store']);
 Route::post('/admin/logout', [SessionController::class, 'destroy']);
+
+Route::get('/store', [StoreController::class, 'show']);
+
+Route::middleware(['auth:admin'])->group(function(){
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
 });
-
-Route::get('/store', [StoreController::class, 'create']);
+Route::post('/admin/dashboard', [StoreController::class, 'store']);
+});
