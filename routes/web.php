@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Store;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\StoreController;
@@ -35,4 +36,15 @@ Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
 });
 Route::post('/admin/dashboard', [StoreController::class, 'store']);
+Route::patch('/admin/dashboard',[StoreContoller::class, 'edit']);
+Route::get('/admin/manage-store', [StoreController::class, 'view']);
+Route::get('/admin/show/{id}', function ($id){
+    $stores = Store::find($id);
+    return view('admin.show', ['stores' => $stores]); 
+});
+Route::post('/admin/update/{id}', [StoreController::class, 'update']);
+Route::delete('/admin/delete/{id}', function ($id){
+    Store::findOrFail($id)->delete();
+    return redirect('admin/manage-store');
+});
 });
