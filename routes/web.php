@@ -2,9 +2,11 @@
 
 use App\Models\Store;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\UserSessionController;
 
 Route::get('/', function () {
     return view('home');
@@ -47,4 +49,17 @@ Route::delete('/admin/delete/{id}', function ($id){
     Store::findOrFail($id)->delete();
     return redirect('admin/manage-store');
 });
+});
+
+Route::get('/user/register', [UserController::class, 'create']);
+Route::post('/user/register', [UserController::class, 'store']);
+
+Route::get('/user/login', [UserSessionController::class, 'create']);
+Route::post('/user/login', [UserSessionController::class, 'store']);
+
+Route::middleware(['auth:web'])-> group(function (){
+    Route::get('user/dashboard', function (){
+        return view('user.dashboard');
+    });
+    Route::post('user/logout',[UserSessionController::class, 'destroy']);
 });
