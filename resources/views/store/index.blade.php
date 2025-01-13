@@ -8,7 +8,9 @@
                 <h2 class="text-center font-bold text-2xl text-green-950">{{ $store->fruit_name }}</h2>
                 <p class="text-center text-sm text-green-950/70">₱{{ $store->fruit_price }} | {{ $store->fruit_quantity }} pcs.</p>
                 <p class="text-center text-sm text-green-950/70">{{ $store->fruit_description }}</p>
-                <button>Buy</button>
+                @auth('web')
+                <a class="px-3 py-1 bg-green-300" href="{{url('user/buy', $store->id)}}">Buy</a>
+                @endauth
             </div>
         @endforeach
     </div>

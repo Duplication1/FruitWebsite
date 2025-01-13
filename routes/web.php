@@ -62,4 +62,8 @@ Route::middleware(['auth:web'])-> group(function (){
         return view('user.dashboard');
     });
     Route::post('user/logout',[UserSessionController::class, 'destroy']);
+    Route::get('/user/buy/{id}', function ($id){
+        $stores = Store::find($id);
+        return view('user/buy', ['stores' => $stores]); 
+    });
 });

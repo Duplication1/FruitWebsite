@@ -7,8 +7,10 @@
                     <h2 class="text-center font-bold text-2xl text-green-950">{{ $store->fruit_name }}</h2>
                     <p class="text-center text-sm text-green-950/70">₱{{ $store->fruit_price }} | {{ $store->fruit_quantity }} pcs.</p>
                     <p class="text-center text-sm text-green-950/70">{{ $store->fruit_description }}</p>
-                    <a href="{{url('admin/show', $store->id)}}">Edit</a>
-                    <button form="delete-form">Delete</button>
+                    <div class="flex justify-end">
+                    <a href="{{url('admin/show', $store->id)}}" class="bg-green-300 mr-2 ml-auto rounded-sm px-2 py-1 mt-5">Edit</a>
+                    <button form="delete-form" class="bg-red-300 w-25 rounded-sm px-2 py-1 mt-5 ">Delete</button>
+                    </div>
                 </div>
             @endforeach
         </div>
